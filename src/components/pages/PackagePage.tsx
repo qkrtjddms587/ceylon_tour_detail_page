@@ -9,7 +9,12 @@ import { useState } from "react";
 import FlightItem from "../common/FlightItem";
 import KEAir from "../../images/airline/korea.jpg";
 import JAAir from "../../images/airline/garuda.jpg";
+import scheduleImg1 from "../../images/hotel/0/schedule-1.jpg";
+import scheduleImg2 from "../../images/hotel/0/schedule-2.jpg";
+import scheduleImg3 from "../../images/hotel/0/schedule-3.jpg";
+import scheduleImg4 from "../../images/hotel/0/schedule-4.jpg";
 import RatingBoard from "../common/RatingBoard";
+import ScheduleElementHeader from "../common/ScheduleElementHeader";
 
 export default function PackagePage() {
   const { packageId } = useParams();
@@ -205,24 +210,60 @@ export default function PackagePage() {
                 <span className="sub__text">2024-10-16(토)</span>
               </div>
               <div className="schedule__main__wrapper">
-                <div className="flight__schedule__board__wrapper">
-                  <div className="flight__schedule__board">
-                    <div className="flight__info__wrapper">
-                      <img src={KEAir} alt="temp" />
-                      <span>대한항공 KE0188</span>
+                <div className="schedule__element__wrapper">
+                  <div className="flight__schedule__board__wrapper">
+                    <div className="flight__schedule__board">
+                      <div className="flight__info__wrapper">
+                        <img src={KEAir} alt="temp" />
+                        <span>대한항공 KE0188</span>
+                      </div>
+                      <div className="flight__time__wrapper">
+                        <span className="flight__time">07시간 30분</span>
+                        <div className="depart__info">
+                          <div />
+                          <span className="time__text">15:30</span>
+                          <span className="airport__text">인천(INC) 출발</span>
+                        </div>
+                        <div className="arrive__info">
+                          <div />
+                          <span className="time__text">19:50</span>
+                          <span className="airport__text">발리(BAL) 도착</span>
+                        </div>
+                      </div>
                     </div>
-                    <div className="flight__time__wrapper">
-                      <span className="flight__time">07시간 30분</span>
-                      <div className="depart__info">
-                        <div />
-                        <span className="time__text">15:30</span>
-                        <span className="airport__text">인천(INC) 출발</span>
+                  </div>
+                </div>
+                <div className="schedule__element__wrapper">
+                  <ScheduleElementHeader
+                    location="인천"
+                    time="15:30"
+                    schedule="인천국제공항 출발 [KE0180]"
+                  />
+                  <div className="schedule__element__main__wrapper">
+                    <div className="table__wrapper">
+                      <div className="table__header">
+                        인천공항 출입국 절차 안내
                       </div>
-                      <div className="arrive__info">
-                        <div />
-                        <span className="time__text">19:50</span>
-                        <span className="airport__text">발리(BAL) 도착</span>
+                      <div className="table__main">
+                        <span>인천공항에서 필요한 내용을 적는 곳입니다.</span>
+                        <span>
+                          필요한 서류나 도착해야하는 시간 등을 안내합니다.
+                          필요한 내용을 적는 곳입니다.
+                        </span>
                       </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="schedule__element__wrapper">
+                  <ScheduleElementHeader
+                    location="발리"
+                    time="19:50"
+                    schedule="발리국제공항 도착"
+                  />
+                  <div className="schedule__element__main__wrapper">
+                    <div className="standard__text__wrapper">
+                      <span>발리공항에서 필요한 내용을 적는 곳입니다.</span>
+                      <span>미팅장소나 방법 등을 적는 곳입니다.</span>
                     </div>
                   </div>
                 </div>
@@ -283,7 +324,7 @@ export default function PackagePage() {
                 <div className="meal__info__wrapper">
                   <span>[조식] 없음</span>
                   <span>[중식] 기내식</span>
-                  <span>[석식] 호텔</span>
+                  <span>[석식] 호텔식</span>
                 </div>
               </div>
               <div className="additional__schedule__wrapper">
@@ -436,7 +477,71 @@ export default function PackagePage() {
                 <span className="main__text">2 DAY</span>
                 <span className="sub__text">2024-10-17(일)</span>
               </div>
-              <div className="schedule__main__wrapper"></div>
+              <div className="schedule__main__wrapper">
+                <div className="schedule__element__wrapper">
+                  <ScheduleElementHeader
+                    location="발리"
+                    schedule="조식 후 선택일정 즐기기"
+                  />
+                  <div className="schedule__element__main__wrapper">
+                    <div className="selected__schedule__table__wrapper">
+                      <span className="header">선택일정 (택1)</span>
+                      <div className="main">
+                        <div>
+                          1. 정글 어드벤처 4종 즐기기 + 현지식 뷔페
+                          <span>
+                            플라잉폭스, 래프팅, 트리탑, 레이지리버 or 스윙
+                          </span>
+                        </div>
+                        <div>
+                          2. 해양스포츠 4종 즐기기 + 외부식(울람 레스토랑
+                          생선/닭 현지식)
+                        </div>
+                        <div>
+                          3. 아름다운 바다 100배 즐기기 데이 크루즈 + 선상뷔페식
+                        </div>
+                        <div>
+                          4. 리조트 내 편안한 자유 일정 + 리조트 현지식 or
+                          외부식
+                        </div>
+                        <div>5. 마린&사파리 관광 + 현지식 뷔페</div>
+                      </div>
+                      <div className="images__box">
+                        <div>
+                          <img src={scheduleImg1} alt="temp" />
+                        </div>
+                        <div>
+                          <img src={scheduleImg2} alt="temp" />
+                        </div>
+                        <div>
+                          <img src={scheduleImg3} alt="temp" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="schedule__element__wrapper">
+                  <ScheduleElementHeader schedule="일정 후 럭져리 스파 즐기기 (1가지 무료선택 가능)" />
+                  <div className="schedule__element__main__wrapper">
+                    <div className="standard__schedule__table__wrapper">
+                      <div className="image__box">
+                        <img src={scheduleImg4} alt="temp" />
+                      </div>
+                      <div className="main__wrapper">
+                        <span className="header">럭셔리 스파</span>
+                        <div className="main">
+                          <span>• 럭셔리 스톤마사지 120분</span>
+                          <span>• 초콜릿 스파마사지 120분</span>
+                          <span>• 아로마 오일 스파마사지 120분</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="schedule__element__wrapper">
+                  <ScheduleElementHeader schedule="리조트 투숙 및 휴식" />
+                </div>
+              </div>
               <div className="additional__schedule__wrapper">
                 <div className="index__wrapper">
                   <svg
