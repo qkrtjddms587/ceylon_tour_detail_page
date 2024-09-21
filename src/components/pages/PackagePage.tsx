@@ -9,6 +9,7 @@ import { useState } from "react";
 import FlightItem from "../common/FlightItem";
 import KEAir from "../../images/airline/korea.jpg";
 import JAAir from "../../images/airline/garuda.jpg";
+import RatingBoard from "../common/RatingBoard";
 
 export default function PackagePage() {
   const { packageId } = useParams();
@@ -187,6 +188,459 @@ export default function PackagePage() {
               상이하므로, 반드시 여행자 본인이 해당국의 대사관에 확인하셔야
               합니다.
             </span>
+          </div>
+        </div>
+        <div className="mx__section">
+          <div className="header__wrapper">
+            <span className="header__main">일정표</span>
+            <span className="header__sub">
+              KE 대한항공 인천 오후 출발 (17:40) / 발리 5박 7일 (2024.10.16 ~
+              2024.10.23)
+            </span>
+          </div>
+          <div className="schedule__tables__wrapper">
+            <div className="schedule__table__wrapper">
+              <div className="schedule__header">
+                <span className="main__text">1 DAY</span>
+                <span className="sub__text">2024-10-16(토)</span>
+              </div>
+              <div className="schedule__main__wrapper">
+                <div className="flight__schedule__board__wrapper">
+                  <div className="flight__schedule__board">
+                    <div className="flight__info__wrapper">
+                      <img src={KEAir} alt="temp" />
+                      <span>대한항공 KE0188</span>
+                    </div>
+                    <div className="flight__time__wrapper">
+                      <span className="flight__time">07시간 30분</span>
+                      <div className="depart__info">
+                        <div />
+                        <span className="time__text">15:30</span>
+                        <span className="airport__text">인천(INC) 출발</span>
+                      </div>
+                      <div className="arrive__info">
+                        <div />
+                        <span className="time__text">19:50</span>
+                        <span className="airport__text">발리(BAL) 도착</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="additional__schedule__wrapper">
+                <div className="index__wrapper">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="36"
+                    height="25"
+                    viewBox="0 0 36 25"
+                    fill="none"
+                  >
+                    <g clip-path="url(#clip0_19_3094)">
+                      <path
+                        d="M16.8802 23.9301C22.3644 23.9301 26.8102 19.4843 26.8102 14.0001C26.8102 8.51588 22.3644 4.07007 16.8802 4.07007C11.396 4.07007 6.9502 8.51588 6.9502 14.0001C6.9502 19.4843 11.396 23.9301 16.8802 23.9301Z"
+                        fill="white"
+                      />
+                      <path
+                        d="M16.8802 24.9301C10.8502 24.9301 5.9502 20.0301 5.9502 14.0001C5.9502 7.97006 10.8502 3.06006 16.8802 3.06006C22.9102 3.06006 27.8102 7.96006 27.8102 13.9901C27.8102 20.0201 22.9102 24.9201 16.8802 24.9201V24.9301ZM16.8802 5.07006C11.9602 5.07006 7.9502 9.08006 7.9502 14.0001C7.9502 18.9201 11.9602 22.9301 16.8802 22.9301C21.8002 22.9301 25.8102 18.9201 25.8102 14.0001C25.8102 9.08006 21.8002 5.07006 16.8802 5.07006Z"
+                        fill="#1D1D1B"
+                      />
+                      <path
+                        d="M16.8799 19.96C20.1715 19.96 22.8399 17.2917 22.8399 14C22.8399 10.7084 20.1715 8.04004 16.8799 8.04004C13.5883 8.04004 10.9199 10.7084 10.9199 14C10.9199 17.2917 13.5883 19.96 16.8799 19.96Z"
+                        fill="white"
+                      />
+                      <path
+                        d="M16.8799 20.95C13.0399 20.95 9.91992 17.83 9.91992 13.99C9.91992 10.15 13.0399 7.03003 16.8799 7.03003C20.7199 7.03003 23.8399 10.15 23.8399 13.99C23.8399 17.83 20.7199 20.95 16.8799 20.95ZM16.8799 9.03003C14.1499 9.03003 11.9199 11.25 11.9199 13.99C11.9199 16.73 14.1399 18.95 16.8799 18.95C19.6199 18.95 21.8399 16.73 21.8399 13.99C21.8399 11.25 19.6199 9.03003 16.8799 9.03003Z"
+                        fill="#1D1D1B"
+                      />
+                      <path
+                        d="M34.42 1V6.19C34.42 7.09 33.69 7.82 32.79 7.82H30.13C29.23 7.82 28.5 7.09 28.5 6.19V1"
+                        fill="white"
+                      />
+                      <path
+                        d="M32.79 8.82H30.13C28.68 8.82 27.5 7.64 27.5 6.19V1H29.5V6.19C29.5 6.53 29.78 6.82 30.13 6.82H32.79C33.14 6.82 33.42 6.54 33.42 6.19V1H35.42V6.19C35.42 7.64 34.24 8.82 32.79 8.82Z"
+                        fill="#1D1D1B"
+                      />
+                      <path d="M32.46 1H30.46V24.2H32.46V1Z" fill="#1D1D1B" />
+                      <path d="M2 1H0V24.2H2V1Z" fill="#1D1D1B" />
+                      <path
+                        d="M1 1C2.8 1 4.25 2.46 4.25 4.25V10.44H1V1Z"
+                        fill="white"
+                      />
+                      <path
+                        d="M4.25 11.44H1C0.45 11.44 0 10.99 0 10.44V1C0 0.45 0.45 0 1 0C3.35 0 5.25 1.91 5.25 4.25V10.44C5.25 10.99 4.8 11.44 4.25 11.44ZM2 9.44H3.25V4.25C3.25 3.37 2.74 2.6 2 2.23V9.44Z"
+                        fill="#1D1D1B"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_19_3094">
+                        <rect width="35.42" height="24.93" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                  <span>식사</span>
+                </div>
+                <div className="meal__info__wrapper">
+                  <span>[조식] 없음</span>
+                  <span>[중식] 기내식</span>
+                  <span>[석식] 호텔</span>
+                </div>
+              </div>
+              <div className="additional__schedule__wrapper">
+                <div className="index__wrapper">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="36"
+                    height="24"
+                    viewBox="0 0 36 24"
+                    fill="none"
+                  >
+                    <g clip-path="url(#clip0_19_3041)">
+                      <path
+                        d="M26.1473 0.917725H9.11328V23.0822H26.1473V0.917725Z"
+                        fill="white"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M12.3623 5.30469H14.6384"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M16.4922 5.30469H18.7683"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M20.623 5.30469H22.89"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M12.3623 8.75562H14.6384"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M16.4922 8.75562H18.7683"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M20.623 8.75562H22.89"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M12.3623 12.2156H14.6384"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M16.4922 12.2156H18.7683"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M20.623 12.2156H22.89"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M19.6404 17.3645H15.6113V23.0823H19.6404V17.3645Z"
+                        fill="white"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M9.11376 6.39697H0.917969V23.0823H9.11376V6.39697Z"
+                        fill="white"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M3.88184 10.2607H6.14876"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M3.88184 13.1885H6.14876"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M3.88184 16.1072H6.14876"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M34.3618 6.39697H26.166V23.0823H34.3618V6.39697Z"
+                        fill="white"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M29.1309 10.2607H31.3978"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M29.1309 13.1885H31.3978"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M29.1309 16.1072H31.3978"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_19_3041">
+                        <rect width="35.2795" height="24" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                  <span>호텔</span>
+                </div>
+                <div className="hotel__info__wrapper">
+                  <span>세인트레지스 호텔</span>
+                  <div>
+                    <RatingBoard rating={5} />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="schedule__table__wrapper">
+              <div className="schedule__header">
+                <span className="main__text">2 DAY</span>
+                <span className="sub__text">2024-10-17(일)</span>
+              </div>
+              <div className="schedule__main__wrapper"></div>
+              <div className="additional__schedule__wrapper">
+                <div className="index__wrapper">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="36"
+                    height="25"
+                    viewBox="0 0 36 25"
+                    fill="none"
+                  >
+                    <g clip-path="url(#clip0_19_3094)">
+                      <path
+                        d="M16.8802 23.9301C22.3644 23.9301 26.8102 19.4843 26.8102 14.0001C26.8102 8.51588 22.3644 4.07007 16.8802 4.07007C11.396 4.07007 6.9502 8.51588 6.9502 14.0001C6.9502 19.4843 11.396 23.9301 16.8802 23.9301Z"
+                        fill="white"
+                      />
+                      <path
+                        d="M16.8802 24.9301C10.8502 24.9301 5.9502 20.0301 5.9502 14.0001C5.9502 7.97006 10.8502 3.06006 16.8802 3.06006C22.9102 3.06006 27.8102 7.96006 27.8102 13.9901C27.8102 20.0201 22.9102 24.9201 16.8802 24.9201V24.9301ZM16.8802 5.07006C11.9602 5.07006 7.9502 9.08006 7.9502 14.0001C7.9502 18.9201 11.9602 22.9301 16.8802 22.9301C21.8002 22.9301 25.8102 18.9201 25.8102 14.0001C25.8102 9.08006 21.8002 5.07006 16.8802 5.07006Z"
+                        fill="#1D1D1B"
+                      />
+                      <path
+                        d="M16.8799 19.96C20.1715 19.96 22.8399 17.2917 22.8399 14C22.8399 10.7084 20.1715 8.04004 16.8799 8.04004C13.5883 8.04004 10.9199 10.7084 10.9199 14C10.9199 17.2917 13.5883 19.96 16.8799 19.96Z"
+                        fill="white"
+                      />
+                      <path
+                        d="M16.8799 20.95C13.0399 20.95 9.91992 17.83 9.91992 13.99C9.91992 10.15 13.0399 7.03003 16.8799 7.03003C20.7199 7.03003 23.8399 10.15 23.8399 13.99C23.8399 17.83 20.7199 20.95 16.8799 20.95ZM16.8799 9.03003C14.1499 9.03003 11.9199 11.25 11.9199 13.99C11.9199 16.73 14.1399 18.95 16.8799 18.95C19.6199 18.95 21.8399 16.73 21.8399 13.99C21.8399 11.25 19.6199 9.03003 16.8799 9.03003Z"
+                        fill="#1D1D1B"
+                      />
+                      <path
+                        d="M34.42 1V6.19C34.42 7.09 33.69 7.82 32.79 7.82H30.13C29.23 7.82 28.5 7.09 28.5 6.19V1"
+                        fill="white"
+                      />
+                      <path
+                        d="M32.79 8.82H30.13C28.68 8.82 27.5 7.64 27.5 6.19V1H29.5V6.19C29.5 6.53 29.78 6.82 30.13 6.82H32.79C33.14 6.82 33.42 6.54 33.42 6.19V1H35.42V6.19C35.42 7.64 34.24 8.82 32.79 8.82Z"
+                        fill="#1D1D1B"
+                      />
+                      <path d="M32.46 1H30.46V24.2H32.46V1Z" fill="#1D1D1B" />
+                      <path d="M2 1H0V24.2H2V1Z" fill="#1D1D1B" />
+                      <path
+                        d="M1 1C2.8 1 4.25 2.46 4.25 4.25V10.44H1V1Z"
+                        fill="white"
+                      />
+                      <path
+                        d="M4.25 11.44H1C0.45 11.44 0 10.99 0 10.44V1C0 0.45 0.45 0 1 0C3.35 0 5.25 1.91 5.25 4.25V10.44C5.25 10.99 4.8 11.44 4.25 11.44ZM2 9.44H3.25V4.25C3.25 3.37 2.74 2.6 2 2.23V9.44Z"
+                        fill="#1D1D1B"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_19_3094">
+                        <rect width="35.42" height="24.93" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                  <span>식사</span>
+                </div>
+                <div className="meal__info__wrapper">
+                  <span>[조식] 리조트</span>
+                  <span>[중식] 선택식</span>
+                  <span>[석식] 씨푸드</span>
+                </div>
+              </div>
+              <div className="additional__schedule__wrapper">
+                <div className="index__wrapper">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="36"
+                    height="24"
+                    viewBox="0 0 36 24"
+                    fill="none"
+                  >
+                    <g clip-path="url(#clip0_19_3041)">
+                      <path
+                        d="M26.1473 0.917725H9.11328V23.0822H26.1473V0.917725Z"
+                        fill="white"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M12.3623 5.30469H14.6384"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M16.4922 5.30469H18.7683"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M20.623 5.30469H22.89"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M12.3623 8.75562H14.6384"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M16.4922 8.75562H18.7683"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M20.623 8.75562H22.89"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M12.3623 12.2156H14.6384"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M16.4922 12.2156H18.7683"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M20.623 12.2156H22.89"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M19.6404 17.3645H15.6113V23.0823H19.6404V17.3645Z"
+                        fill="white"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M9.11376 6.39697H0.917969V23.0823H9.11376V6.39697Z"
+                        fill="white"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M3.88184 10.2607H6.14876"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M3.88184 13.1885H6.14876"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M3.88184 16.1072H6.14876"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M34.3618 6.39697H26.166V23.0823H34.3618V6.39697Z"
+                        fill="white"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M29.1309 10.2607H31.3978"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M29.1309 13.1885H31.3978"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M29.1309 16.1072H31.3978"
+                        stroke="#1D1D1B"
+                        stroke-width="2"
+                        stroke-linejoin="round"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_19_3041">
+                        <rect width="35.2795" height="24" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                  <span>호텔</span>
+                </div>
+                <div className="hotel__info__wrapper">
+                  <span>세인트레지스 호텔</span>
+                  <div>
+                    <RatingBoard rating={5} />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
