@@ -19,8 +19,8 @@ export default function ScheduleElementHeader({
           <div className="dot__icon" />
         </div>
         <div className="schedule__text__wrapper">
-          {time && <span>{time}</span>}
-          <span>{schedule}</span>
+          {time && <span className="time__text">{time}</span>}
+          <span className="schedule__text">{schedule}</span>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import { Category } from "./CategorySelector";
 
 interface SubCategorySelectorProps {
-  type: "sidebar" | "button";
+  type: "sidebar" | "button" | "button-black";
   categories: Category[];
   currentTitle: string;
   setCurrentTitle: React.Dispatch<React.SetStateAction<string>>;

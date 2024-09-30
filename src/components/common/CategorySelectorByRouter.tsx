@@ -1,51 +1,47 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { cls } from "../../utilies";
 
 export type Category = {
   idx: number;
   title: string;
-  href?: string;
+  href: string;
 };
 
 export interface CategorySelectorProps {
   type: "underbar" | "button";
   categories: Category[];
-  currentIdx?: number;
-  setCurrentIdx?: React.Dispatch<React.SetStateAction<number>>;
+  basePath: string;
 }
 
-export default function CategorySelector({
+export default function CategorySelectorByRouter({
   type,
   categories,
-  currentIdx,
-  setCurrentIdx,
+  basePath,
 }: CategorySelectorProps) {
   const navigate = useNavigate();
-  const handleClick = (value: number | string) => {
-    if (typeof value === "number" && setCurrentIdx) {
-      return () => setCurrentIdx(value);
-    } else {
-      return () => navigate(`/${value}`);
-    }
-  };
+  const { pathname } = useLocation();
+  const currentPath = pathname.replace(basePath, "");
+  const isDetail = pathname.includes("detail");
   return (
     <div
-      className="category__selector__wrapper"
+      className={cls(
+        isDetail ? "only-mobile" : "",
+        "category__selector__wrapper"
+      )}
       style={{ gridTemplateColumns: `repeat(${categories.length},1fr)` }}
     >
-      {categories.map(({ idx, title, href }) => (
+      {categories.map(({ title, href, idx }) => (
         <div
+          key={idx}
           className={cls(
             type === "underbar" ? "underbar__selector" : "button__selector",
-            idx === currentIdx
+            currentPath.includes(href)
               ? type === "underbar"
                 ? "select__underbar"
                 : "select__button"
               : ""
           )}
-          onClick={
-            href ? () => () => handleClick(href) : () => handleClick(idx)
-          }
+          onClick={() => navigate(basePath + href)}
         >
           {title}
         </div>

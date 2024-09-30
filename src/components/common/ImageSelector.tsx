@@ -3,9 +3,9 @@ import ShowAllImage from "./ShowAllImage";
 
 interface ImageSelectorProps {
   images: {
-    mainImage: string;
-    roomImage: { roomType: number; image: string }[];
-  };
+    type: number;
+    imagePath: string;
+  }[];
 }
 
 export default function ImageSelector({ images }: ImageSelectorProps) {
@@ -14,9 +14,18 @@ export default function ImageSelector({ images }: ImageSelectorProps) {
     <div className="image__selector__wrapper">
       {onModal && <ShowAllImage images={images} setOnModal={setOnModal} />}
       <div className="images__grid__wrapper">
-        {images.roomImage.slice(0, 3).map((image, idx) => (
+        {images.slice(0, 4).map((image, idx) => (
           <div key={idx}>
-            <img src={image.image} alt="temp" />
+            <img src={image.imagePath} alt="temp" />
+            {idx === 3 && (
+              <div
+                className="mobile__show__all__btn"
+                onClick={() => setOnModal(true)}
+              >
+                <span>사진 모두 보기</span>
+                <span>{`+${images.length}`}</span>
+              </div>
+            )}
           </div>
         ))}
       </div>

@@ -4,9 +4,9 @@ import SubCategorySelector from "./SubCategorySelector";
 
 interface ShowAllImageProps {
   images: {
-    mainImage: string;
-    roomImage: { roomType: number; image: string }[];
-  };
+    type: number;
+    imagePath: string;
+  }[];
   setOnModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -15,7 +15,10 @@ export default function ShowAllImage({
   setOnModal,
 }: ShowAllImageProps) {
   const [categoryId, setCategoryId] = useState(0);
-  const selectCategory = categoryId === 0 ? images.mainImage : images.roomImage;
+  const selectCategory =
+    categoryId === 0
+      ? images.filter((image) => image.type === 0)
+      : images.filter((image) => image.type !== 0);
   const [selectedImgId, setSelectedImgId] = useState(0);
   const imagesLength =
     typeof selectCategory === "string" ? 0 : selectCategory.length;
@@ -103,17 +106,17 @@ export default function ShowAllImage({
               )}
             </div>
             <div className="main__images">
-              <img src={images.roomImage[selectedImgId].image} alt="temp" />
+              <img src={images[selectedImgId].imagePath} alt="temp" />
             </div>
           </div>
           <div className="images__items__list__wrapper">
-            {images.roomImage.map((image, idx) => (
+            {images.map((image, idx) => (
               <div
                 className="images__item__wrapper"
                 onClick={() => setSelectedImgId(idx)}
               >
                 {idx !== selectedImgId && <div />}
-                <img src={image.image} alt="temp" />
+                <img src={image.imagePath} alt="temp" />
               </div>
             ))}
           </div>

@@ -1,28 +1,27 @@
+import { IAddress, INearby } from "../../mockData";
+import { cls } from "../../utilies";
+
 interface InfoItemsProps {
+  type?: "common" | "detail";
   benefit: string[];
-  roomType: string[];
-  locDetail: string[];
+  roomtype: string[];
+  address: IAddress;
+  nearby: INearby[];
 }
 
 export default function InfoItems({
+  type = "common",
   benefit,
-  roomType,
-  locDetail,
+  roomtype,
+  address,
+  nearby,
 }: InfoItemsProps) {
   return (
-    <div className="info__items__wrapper">
-      <div>
-        <span className="item__title">고객 베네핏</span>
-        <ul>
-          {benefit.map((item, idx) => (
-            <li key={idx}>- {item}</li>
-          ))}
-        </ul>
-      </div>
+    <div className="info__items__wrapper mx__section">
       <div>
         <span className="item__title">룸타입</span>
         <ul>
-          {roomType.map((item, idx) => (
+          {roomtype.map((item, idx) => (
             <li key={idx}>
               <label htmlFor={item}>
                 <input type="radio" id={item} checked={idx === 0} />
@@ -34,11 +33,20 @@ export default function InfoItems({
           ))}
         </ul>
       </div>
-      <div>
+      <div className={cls(type === "detail" ? "only-web" : "")}>
+        <span className="item__title">고객 베네핏</span>
+        <ul>
+          {benefit.map((item, idx) => (
+            <li key={idx}>- {item}</li>
+          ))}
+        </ul>
+      </div>
+      <div className={cls(type === "detail" ? "only-web" : "")}>
         <span className="item__title">호텔 위치</span>
         <ul>
-          {locDetail.map((item, idx) => (
-            <li key={idx}>{item}</li>
+          <li key="address">{`주소 : ${address.state} ${address.city} ${address.detailAddress}`}</li>
+          {nearby.map(({ distance, name }, idx) => (
+            <li key={idx}>{`${distance} - ${name}`}</li>
           ))}
           <div className="map__view__btn">
             <svg

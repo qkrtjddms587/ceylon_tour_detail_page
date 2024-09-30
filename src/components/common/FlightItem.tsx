@@ -42,7 +42,7 @@ export default function FlightItem({
           <span>도착</span>
           <span>{`(${schedule.arrive.time})`}</span>
         </div>
-        <span>{period}</span>
+        <span className="period__text">{period}</span>
       </div>
       <div className="flight__select__btn__wrapper">
         <SelectBtn checked={checked} />

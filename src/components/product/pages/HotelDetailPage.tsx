@@ -1,26 +1,25 @@
-import { useParams } from "react-router-dom";
-import { getHotelDataById, getPackageById } from "../../utilies";
-import HotelHeaderSection from "../common/HotelHeaderSection";
-import ImageSelector from "../common/ImageSelector";
-import InfoItems from "../common/InfoItem";
-import SelectBtn from "../common/SelectBtn";
-import SubCategorySelector from "../common/SubCategorySelector";
+import "../product.scss";
+import { useOutletContext } from "react-router-dom";
+import ImageSelector from "../../common/ImageSelector";
+import InfoItems from "../../common/InfoItem";
+import SelectBtn from "../../common/SelectBtn";
+import SubCategorySelector from "../../common/SubCategorySelector";
 import { useState } from "react";
-import FlightItem from "../common/FlightItem";
-import KEAir from "../../images/airline/korea.jpg";
-import JAAir from "../../images/airline/garuda.jpg";
-import scheduleImg1 from "../../images/hotel/0/schedule-1.jpg";
-import scheduleImg2 from "../../images/hotel/0/schedule-2.jpg";
-import scheduleImg3 from "../../images/hotel/0/schedule-3.jpg";
-import scheduleImg4 from "../../images/hotel/0/schedule-4.jpg";
-import RatingBoard from "../common/RatingBoard";
-import ScheduleElementHeader from "../common/ScheduleElementHeader";
+import FlightItem from "../../common/FlightItem";
+import KEAir from "../../../images/airline/korea.jpg";
+import JAAir from "../../../images/airline/garuda.jpg";
+import scheduleImg1 from "../../../images/hotel/0/schedule-1.jpg";
+import scheduleImg2 from "../../../images/hotel/0/schedule-2.jpg";
+import scheduleImg3 from "../../../images/hotel/0/schedule-3.jpg";
+import scheduleImg4 from "../../../images/hotel/0/schedule-4.jpg";
+import RatingBoard from "../../common/RatingBoard";
+import ScheduleElementHeader from "../../common/ScheduleElementHeader";
+import PackageSeletor from "../section/hotel-detail-page/PackageSeletor";
+import { IHotel } from "../../../mockData";
+import CommonSectionHeader from "../../common/CommonSectionHeader";
 
-export default function PackagePage() {
-  const { packageId } = useParams();
-  const id = +packageId!;
-  const packageData = getPackageById(id);
-  const hotelData = getHotelDataById(packageData.hotelId);
+export default function HotelDetailPage() {
+  const hotelData: IHotel = useOutletContext();
   const [flightType, setFlightType] = useState("직항");
   const flightObjs = [
     {
@@ -49,48 +48,19 @@ export default function PackagePage() {
     },
   ];
   return (
-    <div>
-      <HotelHeaderSection {...hotelData} type="mini" />
-      <div className="acommodation__selector__wrapper">
-        <span className="sub__text">인천출발 / 발리 5박 7일</span>
-        <div className="selected__item__wrapper">
-          <span className="selected__item">
-            [꾸따] 포 포인츠 바이 쉐라톤 디럭스 라군 2박 + [누사두아]
-            세인트레지스 풀빌라 2박
-          </span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={3}
-            stroke="currentColor"
-            className="extension__btn"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="m19.5 8.25-7.5 7.5-7.5-7.5"
-            />
-          </svg>
-        </div>
-        <div className="hotel__selector__wrapper">
-          <span>포 포인츠 바이 쉐리톤</span>
-          <span className="selected">세인트레지스 풀빌라</span>
-        </div>
-      </div>
+    <>
+      <PackageSeletor />
       <div>
-        <ImageSelector images={hotelData.info.images} />
-        <InfoItems {...hotelData.info} />
-        <div className="select__package__byroom__wrapper">
-          <div className="header__wrapper">
-            <span className="header__main">룸타입별 선택상품</span>
-            <span className="header__sub">
-              상품기간 : 2024.01.05 ~ 2024.12.20
-            </span>
-          </div>
+        <ImageSelector images={hotelData.hotelImages} />
+        <InfoItems {...hotelData} type="detail" />
+        <div className="select__package__byroom__wrapper mx__section">
+          <CommonSectionHeader
+            mainText="룸타입별 선택상품"
+            subText="상품기간 : 2024.01.05 ~ 2024.12.20"
+          />
           <div className="package__item__wrapper">
             <div className="image__wrapper">
-              <img src={hotelData.info.images.roomImage[0].image} alt="temp" />
+              <img src={hotelData.hotelImages[0].imagePath} alt="temp" />
             </div>
             <div className="padding__wrapper">
               <div className="package__info__wrapper">
@@ -99,7 +69,7 @@ export default function PackagePage() {
                   <span className="info__subtitle">
                     선투숙리조트 2박 + 반엔트리 원베드 풀빌라 2박
                   </span>
-                  <span className="info__subtitle">4박 6일 일정</span>
+                  <span className="info__subtitle">5박 7일 일정</span>
                   <div className="info__detail__wrapper">
                     <span>-페어먼트 디럭스(5성급) 2박</span>
                     <span>-원베드 풀빌라 2박</span>
@@ -121,9 +91,9 @@ export default function PackagePage() {
             </div>
           </div>
         </div>
-        <div className="schedule__byairline__wrapper">
-          <div className="header__wrapper">
-            <span className="header__main">항공사별 일정표</span>
+        <div className="schedule__byairline__wrapper mx__section">
+          <div className="airline__header__wrapper">
+            <CommonSectionHeader mainText="항공사별 일정표" />
             <SubCategorySelector
               type="sidebar"
               categories={[
@@ -136,15 +106,31 @@ export default function PackagePage() {
           </div>
           <div className="flight__items__wrapper">
             {flightObjs.map((flightObj, idx) => (
-              <FlightItem key={id} {...flightObj} checked={idx === 0} />
+              <FlightItem
+                key={flightObj.id}
+                {...flightObj}
+                checked={idx === 0}
+              />
             ))}
           </div>
         </div>
+        <div className="underline__table__wrapper only-mobile mx__section">
+          <div className="underline__header__wrapper">
+            <CommonSectionHeader mainText="주의사항" />
+          </div>
+          <div className="underline__main__wrapper">
+            <span>- 주의사항에 대한 내용을 적는 곳입니다.</span>
+            <span>- 주의사항에 대한 내용을 적는 곳입니다.</span>
+            <span>- 주의사항에 대한 내용을 적는 곳입니다.</span>
+          </div>
+        </div>
         <div className="included__items__section__wrapper mx__section">
-          <div className="single__header__main">포함/불포함</div>
-          <div className="included__items__wrapper">
+          <div className="only-web">
+            <CommonSectionHeader mainText="포함/불포함" />
+          </div>
+          <div className="included__items__wrapper ">
             <div className="index__title__wrapper">
-              <span className="included__icon">O</span>
+              <div className="included__icon" />
               <span>포함사항</span>
             </div>
             <div className="elements__wrapper">
@@ -163,7 +149,20 @@ export default function PackagePage() {
               <span>- 여행자 보험</span>
             </div>
             <div className="index__title__wrapper">
-              <span className="unincluded__icon">X</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={3}
+                stroke="currentColor"
+                className="excluded__icon"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18 18 6M6 6l12 12"
+                />
+              </svg>
               <span>불포함사항</span>
             </div>
             <div className="elements__wrapper">
@@ -174,7 +173,7 @@ export default function PackagePage() {
           </div>
         </div>
         <div className="must__read__section__wrapper mx__section">
-          <div className="single__header__main">필독사항</div>
+          <CommonSectionHeader mainText="필독사항" />
           <div className="must__read__wrapper">
             <span>
               - 상기일정은 항공 및 현지사정으로 인하여 변경될 수 있습니다.
@@ -196,13 +195,12 @@ export default function PackagePage() {
           </div>
         </div>
         <div className="mx__section">
-          <div className="header__wrapper">
-            <span className="header__main">일정표</span>
-            <span className="header__sub">
-              KE 대한항공 인천 오후 출발 (17:40) / 발리 5박 7일 (2024.10.16 ~
-              2024.10.23)
-            </span>
-          </div>
+          <CommonSectionHeader
+            mainText="일정표"
+            subText="KE 대한항공 인천 오후 출발 (17:40) / 발리 5박 7일 (2024.10.16 ~
+              2024.10.23)"
+            type="schedule"
+          />
           <div className="schedule__tables__wrapper">
             <div className="schedule__table__wrapper">
               <div className="schedule__header">
@@ -211,7 +209,7 @@ export default function PackagePage() {
               </div>
               <div className="schedule__main__wrapper">
                 <div className="schedule__element__wrapper">
-                  <div className="flight__schedule__board__wrapper">
+                  <div className="only-web flight__schedule__board__wrapper">
                     <div className="flight__schedule__board">
                       <div className="flight__info__wrapper">
                         <img src={KEAir} alt="temp" />
@@ -240,7 +238,7 @@ export default function PackagePage() {
                     schedule="인천국제공항 출발 [KE0180]"
                   />
                   <div className="schedule__element__main__wrapper">
-                    <div className="table__wrapper">
+                    <div className="only-web table__wrapper">
                       <div className="table__header">
                         인천공항 출입국 절차 안내
                       </div>
@@ -251,6 +249,12 @@ export default function PackagePage() {
                           필요한 내용을 적는 곳입니다.
                         </span>
                       </div>
+                    </div>
+                    <div className="only-mobile flight__card__wrapper">
+                      <img src={KEAir} alt="temp" />
+                      <span>대한항공</span>
+                      <span>KE0188</span>
+                      <span>07시간 30분</span>
                     </div>
                   </div>
                 </div>
@@ -540,6 +544,7 @@ export default function PackagePage() {
                 </div>
                 <div className="schedule__element__wrapper">
                   <ScheduleElementHeader schedule="리조트 투숙 및 휴식" />
+                  <div className="schedule__element__main__wrapper"></div>
                 </div>
               </div>
               <div className="additional__schedule__wrapper">
@@ -615,119 +620,119 @@ export default function PackagePage() {
                         d="M26.1473 0.917725H9.11328V23.0822H26.1473V0.917725Z"
                         fill="white"
                         stroke="#1D1D1B"
-                        stroke-width="2"
-                        stroke-linejoin="round"
+                        strokeWidth="2"
+                        strokeLinejoin="round"
                       />
                       <path
                         d="M12.3623 5.30469H14.6384"
                         stroke="#1D1D1B"
-                        stroke-width="2"
-                        stroke-linejoin="round"
+                        strokeWidth="2"
+                        strokeLinejoin="round"
                       />
                       <path
                         d="M16.4922 5.30469H18.7683"
                         stroke="#1D1D1B"
-                        stroke-width="2"
-                        stroke-linejoin="round"
+                        strokeWidth="2"
+                        strokeLinejoin="round"
                       />
                       <path
                         d="M20.623 5.30469H22.89"
                         stroke="#1D1D1B"
-                        stroke-width="2"
-                        stroke-linejoin="round"
+                        strokeWidth="2"
+                        strokeLinejoin="round"
                       />
                       <path
                         d="M12.3623 8.75562H14.6384"
                         stroke="#1D1D1B"
-                        stroke-width="2"
-                        stroke-linejoin="round"
+                        strokeWidth="2"
+                        strokeLinejoin="round"
                       />
                       <path
                         d="M16.4922 8.75562H18.7683"
                         stroke="#1D1D1B"
-                        stroke-width="2"
-                        stroke-linejoin="round"
+                        strokeWidth="2"
+                        strokeLinejoin="round"
                       />
                       <path
                         d="M20.623 8.75562H22.89"
                         stroke="#1D1D1B"
-                        stroke-width="2"
-                        stroke-linejoin="round"
+                        strokeWidth="2"
+                        strokeLinejoin="round"
                       />
                       <path
                         d="M12.3623 12.2156H14.6384"
                         stroke="#1D1D1B"
-                        stroke-width="2"
-                        stroke-linejoin="round"
+                        strokeWidth="2"
+                        strokeLinejoin="round"
                       />
                       <path
                         d="M16.4922 12.2156H18.7683"
                         stroke="#1D1D1B"
-                        stroke-width="2"
-                        stroke-linejoin="round"
+                        strokeWidth="2"
+                        strokeLinejoin="round"
                       />
                       <path
                         d="M20.623 12.2156H22.89"
                         stroke="#1D1D1B"
-                        stroke-width="2"
-                        stroke-linejoin="round"
+                        strokeWidth="2"
+                        strokeLinejoin="round"
                       />
                       <path
                         d="M19.6404 17.3645H15.6113V23.0823H19.6404V17.3645Z"
                         fill="white"
                         stroke="#1D1D1B"
-                        stroke-width="2"
-                        stroke-linejoin="round"
+                        strokeWidth="2"
+                        strokeLinejoin="round"
                       />
                       <path
                         d="M9.11376 6.39697H0.917969V23.0823H9.11376V6.39697Z"
                         fill="white"
                         stroke="#1D1D1B"
-                        stroke-width="2"
-                        stroke-linejoin="round"
+                        strokeWidth="2"
+                        strokeLinejoin="round"
                       />
                       <path
                         d="M3.88184 10.2607H6.14876"
                         stroke="#1D1D1B"
-                        stroke-width="2"
-                        stroke-linejoin="round"
+                        strokeWidth="2"
+                        strokeLinejoin="round"
                       />
                       <path
                         d="M3.88184 13.1885H6.14876"
                         stroke="#1D1D1B"
-                        stroke-width="2"
-                        stroke-linejoin="round"
+                        strokeWidth="2"
+                        strokeLinejoin="round"
                       />
                       <path
                         d="M3.88184 16.1072H6.14876"
                         stroke="#1D1D1B"
                         stroke-width="2"
-                        stroke-linejoin="round"
+                        strokeLinejoin="round"
                       />
                       <path
                         d="M34.3618 6.39697H26.166V23.0823H34.3618V6.39697Z"
                         fill="white"
                         stroke="#1D1D1B"
                         stroke-width="2"
-                        stroke-linejoin="round"
+                        strokeLinejoin="round"
                       />
                       <path
                         d="M29.1309 10.2607H31.3978"
                         stroke="#1D1D1B"
                         stroke-width="2"
-                        stroke-linejoin="round"
+                        strokeLinejoin="round"
                       />
                       <path
                         d="M29.1309 13.1885H31.3978"
                         stroke="#1D1D1B"
                         stroke-width="2"
-                        stroke-linejoin="round"
+                        strokeLinejoin="round"
                       />
                       <path
                         d="M29.1309 16.1072H31.3978"
                         stroke="#1D1D1B"
                         stroke-width="2"
-                        stroke-linejoin="round"
+                        strokeLinejoin="round"
                       />
                     </g>
                     <defs>
@@ -749,6 +754,6 @@ export default function PackagePage() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
