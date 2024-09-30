@@ -32,7 +32,7 @@ export default function HotelList({ selectedHotelObjs }: HotelListProps) {
       </div>
       <div className="category__items__wrapper">
         {filteringHotelObjs.map((hotelObj) => (
-          <a key={hotelObj.id} href={`/ceylon_publicing/hotel/${hotelObj.id}`}>
+          <a key={hotelObj.id} href={`/hotel/${hotelObj.id}`}>
             <RecommendCard {...hotelObj} />
           </a>
         ))}
