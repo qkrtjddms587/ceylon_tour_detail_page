@@ -4,20 +4,22 @@ import HotelDetailPage from "./components/product/pages/HotelDetailPage";
 import HotelPage from "./components/product/pages/HotelPage";
 import HotelInfoSection from "./components/product/section/hotel-page/HotelInfoSection";
 import HotelPackagesSection from "./components/product/section/hotel-page/HotelPackagesSection";
+import ResortPage from "./components/product/pages/ResortPage";
+import ResortDetailPage from "./components/product/pages/ResortDetailPage";
 
 const router = createBrowserRouter([
   {
     path: "",
     element: <App />,
     children: [
-      // {
-      //   path: "tour",
-      //   element: <ResortPage />,
-      // },
-      //   {
-      //     path: "tour/:tourId",
-      //     element: <ResortDetailPage />,
-      //   },
+      {
+        path: "tour",
+        element: <ResortPage />,
+      },
+      {
+        path: "tour/:tourId",
+        element: <ResortDetailPage />,
+      },
       {
         path: "hotel/:hotelId",
         element: <HotelPage />,

@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { ITour } from "../../mockData";
+import { ITour } from "../../../../mockData";
 
 interface SearchSelectInputProps {
   items?: ITour[];
@@ -36,7 +36,7 @@ export default function SearchSelectInput({
     chevronRef.current?.style.setProperty("transform", "");
   };
   return (
-    <div className="resort__search__input__wrapper">
+    <div className="serach__select__input__wrapper">
       <div className="selected__item" onClick={clickedSelectItem}>
         {kind === "loc" && (
           <div>
